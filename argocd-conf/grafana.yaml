@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana
+  namespace: argocd
+spec:
+  source:
+    chart: grafana
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 8.10.0
+    helm:
+      values: |
+        automountServiceAccountToken: false
+        extraVolumes:
+          - name: grafana-temp
+            emptyDir: {}
+        extraVolumeMounts:
+          - name: grafana-temp
+            mountPath: /tmp
+        securityContext:
+          runAsUser: 472
+          fsGroup: 472
+          runAsNonRoot: true
+          fsGroup: 472
+        containerSecurityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+          seccompProfile:
+            type: RuntimeDefault
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: grafana
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+  project: default
