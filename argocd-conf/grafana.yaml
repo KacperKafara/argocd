@@ -14,7 +14,7 @@ spec:
           name: grafana
         replicas: 2
         adminPassword: admin
-        automountServiceAccountToken: false
+        automountServiceAccountToken: true
         extraVolumes:
           - name: grafana-temp
             emptyDir: {}
