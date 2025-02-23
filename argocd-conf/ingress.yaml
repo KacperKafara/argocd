@@ -19,8 +19,8 @@ spec:
           replicaCount: 2
           config:
             generate-request-id: "false"
-          service:
-            loadBalancerIP: "10.170.16.20"
+#          service:
+#            loadBalancerIP: "10.170.16.20"
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: ingress
