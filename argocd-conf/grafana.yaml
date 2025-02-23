@@ -42,6 +42,13 @@ spec:
         grafana.ini:
           log:
             level: info
+        datasources:
+          datasources.yaml:
+            apiVersion: 1
+            datasources:
+            - name: Prometheus
+              type: prometheus
+              url: http://prometheus-server.monitoring.svc.cluster.local:9090
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: grafana
