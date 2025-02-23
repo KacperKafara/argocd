@@ -28,7 +28,7 @@ spec:
           fsGroup: 472
         containerSecurityContext:
           allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
+          readOnlyRootFilesystem: false
           capabilities:
             drop:
             - ALL
