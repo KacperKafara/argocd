@@ -14,7 +14,8 @@ spec:
         fullnameOverride: "ingress-nginx"
         controller:
           admissionWebhooks:
-            enabled: false
+            certManager:
+              enabled: true
           podAnnotations:
             prometheus.io/port: "10254"
             prometheus.io/scrape: "true"
