@@ -15,6 +15,12 @@ spec:
         replicas: 2
         adminPassword: admin
         automountServiceAccountToken: false
+        rbac:
+          create: true
+          rules:
+            - apiGroups: [""]
+              resources: ["pods", "secrets", "configmaps"]
+              verbs: ["get", "list", "watch"]
         extraVolumes:
           - name: grafana-temp
             emptyDir: {}
@@ -45,18 +51,6 @@ spec:
         grafana.ini:
           log:
             level: info
-#        ingress:
-#          enabled: true
-#          hosts:
-#            - "grafana.test.io"
-#          ingressClassName: "nginx"
-#        datasources:
-#          datasources.yaml:
-#            apiVersion: 1
-#            datasources:
-#            - name: Prometheus
-#              type: prometheus
-#              url: http://prometheus-server.prometheus.svc.cluster.local:9090
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: grafana
