@@ -14,7 +14,6 @@ spec:
           name: grafana
         replicas: 2
         adminPassword: admin
-        automountServiceAccountToken: true
         extraVolumes:
           - name: grafana-temp
             emptyDir: {}
@@ -34,21 +33,21 @@ spec:
             - ALL
           seccompProfile:
             type: RuntimeDefault
-        ingress:
-          enabled: true
-          hosts:
-            - "grafana.test.io"
-          ingressClassName: "nginx"
         grafana.ini:
           log:
             level: info
+#        ingress:
+#          enabled: true
+#          hosts:
+#            - "grafana.test.io"
+#          ingressClassName: "nginx"
 #        datasources:
 #          datasources.yaml:
 #            apiVersion: 1
 #            datasources:
 #            - name: Prometheus
 #              type: prometheus
-#              url: http://prometheus-server.monitoring.svc.cluster.local:9090
+#              url: http://prometheus-server.prometheus.svc.cluster.local:9090
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: grafana
