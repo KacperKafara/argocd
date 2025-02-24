@@ -14,13 +14,21 @@ spec:
           name: grafana
         replicas: 2
         adminPassword: admin
-        automountServiceAccountToken: true
+        automountServiceAccountToken: false
         extraVolumes:
           - name: grafana-temp
             emptyDir: {}
+          - name: projected-token-volume
+            projected:
+              sources:
+                - serviceAccountToken:
+                    path: token
+                    expirationSeconds: 600
         extraVolumeMounts:
           - name: grafana-temp
             mountPath: /tmp
+          - name: projected-token-volume
+            mountPath: /var/run/secrets/kubernetes.io/serviceaccount
         securityContext:
           runAsUser: 472
           fsGroup: 472
