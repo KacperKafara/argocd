@@ -1,33 +1,33 @@
-#apiVersion: argoproj.io/v1alpha1
-#kind: Application
-#metadata:
-#  name: ingress
-#  namespace: argocd
-#spec:
-#  source:
-#    chart: ingress-nginx
-#    repoURL: https://kubernetes.github.io/ingress-nginx
-#    targetRevision: 4.11.3
-#    helm:
-#      version: v3
-#      values: |
-#        fullnameOverride: "ingress-nginx"
-#        controller:
-#          admissionWebhooks:
-#            certManager:
-#              enabled: true
-#          podAnnotations:
-#            prometheus.io/port: "10254"
-#            prometheus.io/scrape: "true"
-#          replicaCount: 2
-#          config:
-#            generate-request-id: "false"
-#          service:
-#            loadBalancerIP: "10.170.16.20"
-#  destination:
-#    server: 'https://kubernetes.default.svc'
-#    namespace: ingress
-#  syncPolicy:
-#    syncOptions:
-#      - CreateNamespace=true
-#  project: default
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress
+  namespace: argocd
+spec:
+  source:
+    chart: ingress-nginx
+    repoURL: https://kubernetes.github.io/ingress-nginx
+    targetRevision: 4.11.3
+    helm:
+      version: v3
+      values: |
+        fullnameOverride: "ingress-nginx"
+        controller:
+          admissionWebhooks:
+            certManager:
+              enabled: true
+          podAnnotations:
+            prometheus.io/port: "10254"
+            prometheus.io/scrape: "true"
+          replicaCount: 2
+          config:
+            generate-request-id: "false"
+          service:
+            loadBalancerIP: "10.170.16.20"
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: ingress
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+  project: default
