@@ -11,6 +11,7 @@ kubectl create namespace argocd
 helm install argocd argo/argo-cd --namespace argocd \
   --set server.extraArgs={--insecure}
 
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.17.0/cert-manager.yaml
 kubectl rollout status deployment/argocd-server -n argocd
 
 #bcrypt(password)=$2a$10$rRyBsGSHK6.uc8fntPwVIuLVHgsAhAX7TcdrqW/RADU0uh7CaChLa

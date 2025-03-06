@@ -14,7 +14,6 @@ spec:
           name: grafana
         replicas: 2
         adminPassword: admin
-        automountServiceAccountToken: false
         rbac:
           create: true
           rules:
@@ -24,33 +23,26 @@ spec:
         extraVolumes:
           - name: grafana-temp
             emptyDir: {}
-          - name: projected-token-volume
-            projected:
-              sources:
-                - serviceAccountToken:
-                    path: token
-                    expirationSeconds: 600
         extraVolumeMounts:
           - name: grafana-temp
             mountPath: /tmp
-          - name: projected-token-volume
-            mountPath: /var/run/secrets/kubernetes.io/serviceaccount
         securityContext:
           runAsUser: 472
           fsGroup: 472
           runAsNonRoot: true
-          fsGroup: 472
         containerSecurityContext:
           allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: false
+          readOnlyRootFilesystem: true
           capabilities:
             drop:
             - ALL
           seccompProfile:
             type: RuntimeDefault
         grafana.ini:
+          server:
+            root_url: "http://localhost:30000"
           log:
-            level: info
+            level: debug
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: grafana
