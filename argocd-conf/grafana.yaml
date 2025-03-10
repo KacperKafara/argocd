@@ -26,23 +26,23 @@ spec:
         extraVolumeMounts:
           - name: grafana-temp
             mountPath: /tmp
-        securityContext:
-          runAsUser: 472
-          fsGroup: 472
-          runAsNonRoot: true
         containerSecurityContext:
-          allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
-          capabilities:
-            drop:
-            - ALL
-          seccompProfile:
-            type: RuntimeDefault
+        ingress:
+          enabled: true
+          hosts:
+            - "grafana.local"
+          ingressClassName: "nginx"
         grafana.ini:
-          server:
-            root_url: "http://localhost:30000"
           log:
             level: debug
+          database:
+            type: mysql
+            host: my-mysql.default.svc.cluster.local:3306
+            name: grafana
+            user: root
+            password: sWO84vfbws
+            ssl_mode: disable
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: grafana
