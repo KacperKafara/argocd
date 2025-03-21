@@ -148,4 +148,4 @@ spec:
     - destination:
         port:
           number: 80
-        host: apache.default.svc.cluster.local        
+        host: apache.infrastructure.svc.cluster.local
