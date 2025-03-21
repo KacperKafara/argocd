@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: invoicing
+    version: "1.0"
+  name: invoicing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: invoicing
+  template:
+    metadata:
+      labels:
+        app: invoicing
+    spec:
+      containers:
+      - name: invoicing
+        image: microservice-istio-invoicing:1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: invoicing
+  name: invoicing
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+    name: http
+  selector:
+    app: invoicing
+  type: NodePort

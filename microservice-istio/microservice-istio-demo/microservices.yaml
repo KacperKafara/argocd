@@ -183,7 +183,7 @@ spec:
     - destination:
         port:
           number: 80
-        host: shipping.default.svc.cluster.local
+        host: shipping.microservices.svc.cluster.local
 
 ---
 
@@ -206,7 +206,7 @@ spec:
     - destination:
         port:
           number: 80
-        host: invoicing.default.svc.cluster.local
+        host: invoicing.microservices.svc.cluster.local
 
 ---
 
@@ -229,4 +229,4 @@ spec:
     - destination:
         port:
           number: 80
-        host: order.default.svc.cluster.local
+        host: order.microservices.svc.cluster.local

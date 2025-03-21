@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: microservices
+  namespace: argocd
+spec:
+  source:
+    repoURL: git@github.com:KacperKafara/argocd.git
+    targetRevision: istio
+    path: microservices
+    directory:
+      recurse: true
+  project: default
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: microservices
+  syncPolicy:
+    managedNamespaceMetadata:
+      labels:
+        istio-injection: enabled
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
