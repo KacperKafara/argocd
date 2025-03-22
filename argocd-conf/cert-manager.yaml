@@ -7,7 +7,7 @@ spec:
   source:
     repoURL: git@github.com:KacperKafara/argocd.git
     targetRevision: istio
-    path: cert-manager-conf
+    path: cert-conf
   project: default
   destination:
     server: 'https://kubernetes.default.svc'
