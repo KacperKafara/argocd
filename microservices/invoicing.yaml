@@ -19,6 +19,9 @@ spec:
       - name: invoicing
         image: docker.io/ewolff/microservice-istio-invoicing:1
         imagePullPolicy: IfNotPresent
+        env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:postgresql://postgres.infrastructure.svc.cluster.local:5432/dbinvoicing
         ports:
         - containerPort: 8080
 ---
@@ -36,4 +39,3 @@ spec:
     name: http
   selector:
     app: invoicing
-  type: NodePort

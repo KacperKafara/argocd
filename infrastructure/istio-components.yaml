@@ -4,14 +4,14 @@ metadata:
   name: microservice-gateway
 spec:
   selector:
-    istio: ingressgateway
+    istio: ingress
   servers:
   - port:
       number: 80
       name: http
       protocol: HTTP
     hosts:
-    - "*"
+    - "istio.local"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -19,7 +19,7 @@ metadata:
   name: apache
 spec:
   hosts:
-  - "*"
+  - "istio.local"
   gateways:
   - microservice-gateway
   http:

@@ -4,9 +4,9 @@ metadata:
   name: shipping
 spec:
   hosts:
-  - "*"
+  - "istio.local"
   gateways:
-  - microservice-gateway
+  - infrastructure/microservice-gateway
   http:
   - match:
     - uri:
@@ -25,9 +25,9 @@ metadata:
   name: invoicing
 spec:
   hosts:
-  - "*"
+  - "istio.local"
   gateways:
-  - microservice-gateway
+  - infrastructure/microservice-gateway
   http:
   - match:
     - uri:
@@ -46,9 +46,9 @@ metadata:
   name: order
 spec:
   hosts:
-  - "*"
+  - "istio.local"
   gateways:
-  - microservice-gateway
+  - infrastructure/microservice-gateway
   http:
   - match:
     - uri:
