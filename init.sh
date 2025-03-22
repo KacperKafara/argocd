@@ -4,7 +4,7 @@
 minikube delete
 
 # run minikube
-minikube start
+minikube start --cpus=4 --memory=6144
 
 # install argocd
 kubectl create namespace argocd
@@ -27,4 +27,4 @@ kubectl patch svc -n argocd argocd-server \
 echo "ArgoCD is ready!"
 echo "URL: http://$(minikube ip):$(kubectl get svc -n argocd argocd-server -o=jsonpath='{.spec.ports[0].nodePort}')"
 echo "Login: admin"
-echo "Password: admin"
+echo "Password: password"
