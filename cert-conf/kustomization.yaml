@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+secretGenerator:
+  - name: ingress-cert
+    files:
+      - tls.crt=cert/hello.istio.local.crt
+      - tls.key=cert/hello.istio.local.key
+    type: "kubernetes.io/tls"
+generatorOptions:
+  disableNameSuffixHash: true
