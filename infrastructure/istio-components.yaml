@@ -4,7 +4,7 @@ metadata:
   name: apache
 spec:
   hosts:
-  - "hello.istio.local"
+  - "istio.local"
   gateways:
   - istio-system/microservice-gateway
   http:
