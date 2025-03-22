@@ -19,6 +19,9 @@ spec:
       - name: order
         image: docker.io/ewolff/microservice-istio-order:1
         imagePullPolicy: IfNotPresent
+        env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:postgresql://postgres.infrastructure.svc.cluster.local:5432/dborder
         ports:
         - containerPort: 8080
 ---
@@ -37,4 +40,3 @@ spec:
     name: http
   selector:
     app: order
-  type: NodePort

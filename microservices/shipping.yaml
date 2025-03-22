@@ -19,6 +19,9 @@ spec:
       - name: shipping
         image: docker.io/ewolff/microservice-istio-shipping:1
         imagePullPolicy: IfNotPresent
+        env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:postgresql://postgres.infrastructure.svc.cluster.local:5432/dbshipping
         ports:
         - containerPort: 8080
 ---
@@ -36,4 +39,3 @@ spec:
     name: http
   selector:
     app: shipping
-  type: NodePort
