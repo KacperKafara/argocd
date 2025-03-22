@@ -11,7 +11,7 @@ spec:
         name: http
         protocol: HTTP
       hosts:
-      - "hello.istio.local"
+      - "istio.local"
       tls:
         httpsRedirect: true
     - port:
@@ -19,7 +19,7 @@ spec:
         name: https
         protocol: HTTPS
       hosts:
-      - "hello.istio.local"
+      - "istio.local"
       tls:
         mode: SIMPLE
         minProtocolVersion: TLSV1_2
