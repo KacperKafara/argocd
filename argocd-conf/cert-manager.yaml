@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  source:
+    repoURL: git@github.com:KacperKafara/argocd.git
+    targetRevision: istio
+    path: cert-manager-conf
+  project: default
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: infrastructure
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
