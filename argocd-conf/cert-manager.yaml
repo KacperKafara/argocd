@@ -11,7 +11,7 @@ spec:
   project: default
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: infrastructure
+    namespace: istio-system
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

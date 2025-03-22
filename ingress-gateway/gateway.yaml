@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: microservice-gateway
+spec:
+  selector:
+    istio: ingress
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+      - "hello.istio.local"
+      tls:
+        httpsRedirect: true
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      hosts:
+      - "hello.istio.local"
+      tls:
+        mode: SIMPLE
+        minProtocolVersion: TLSV1_2
+        credentialName: ingress-cert
