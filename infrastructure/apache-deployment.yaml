@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
       - name: apache
-        image: microservice-istio-apache:latest
-        imagePullPolicy: Never
+        image: docker.io/ewolff/microservice-istio-apache:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
         resources: {}

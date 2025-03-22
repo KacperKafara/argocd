@@ -19,8 +19,8 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: microservice-istio-postgres:latest
-        imagePullPolicy: Never
+        image: docker.io/ewolff/microservice-istio-postgres:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5432
         env:

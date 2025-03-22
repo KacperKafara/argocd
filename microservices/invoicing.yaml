@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
       - name: invoicing
-        image: microservice-istio-invoicing:1
-        imagePullPolicy: Never
+        image: docker.io/ewolff/microservice-istio-invoicing:1
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
 ---
