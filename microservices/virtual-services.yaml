@@ -6,7 +6,7 @@ spec:
   hosts:
   - "hello.istio.local"
   gateways:
-  - infrastructure/microservice-gateway
+  - istio-system/microservice-gateway
   http:
   - match:
     - uri:
@@ -27,7 +27,7 @@ spec:
   hosts:
   - "hello.istio.local"
   gateways:
-  - infrastructure/microservice-gateway
+  - istio-system/microservice-gateway
   http:
   - match:
     - uri:
@@ -48,7 +48,7 @@ spec:
   hosts:
   - "hello.istio.local"
   gateways:
-  - infrastructure/microservice-gateway
+  - istio-system/microservice-gateway
   http:
   - match:
     - uri:
@@ -69,7 +69,7 @@ spec:
   hosts:
   - "hello.istio.local"
   gateways:
-    - infrastructure/microservice-gateway
+    - istio-system/microservice-gateway
   http:
   - match:
     - uri:
