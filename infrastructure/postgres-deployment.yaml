@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: docker.io/ewolff/microservice-istio-postgres:latest
+        image: docker.io/ewolff/microservice-istio-postgres
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5432
@@ -28,7 +28,6 @@ spec:
           value: "dbuser"
         - name: POSTGRES_PASSWORD
           value: "dbpass"
-        resources: {}
         volumeMounts:
         - name: postgres
           mountPath: /var/lib/postgresql/data
