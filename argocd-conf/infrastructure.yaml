@@ -4,12 +4,25 @@ metadata:
   name: infrastructure
   namespace: argocd
 spec:
-  source:
-    repoURL: git@github.com:KacperKafara/argocd.git
-    targetRevision: istio
-    path: infrastructure
-    directory:
-      recurse: true
+  sources:
+    - repoURL: git@github.com:KacperKafara/argocd.git
+      targetRevision: istio
+      path: infrastructure
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      targetRevision: 6.10.0
+      chart: prometheus-postgres-exporter
+      helm:
+        values: |
+          config:
+            datasource:
+              host: postgres.infrastructure.svc.cluster.local
+              database: dbbonus
+              userSecret:
+                name: postgres-secret
+                key: user
+              passwordSecret:
+                name: postgres-secret
+                key: password
   project: default
   destination:
     server: 'https://kubernetes.default.svc'
