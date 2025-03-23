@@ -14,6 +14,7 @@ spec:
           alertmanager:
             enabled: false
           server:
+            resourcesPreset: small
             existingConfigmap: prometheus-cm
             service:
               type: ClusterIP
