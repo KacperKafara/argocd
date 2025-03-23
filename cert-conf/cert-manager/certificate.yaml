@@ -11,7 +11,8 @@ spec:
     organizations:
       - Istio
   dnsNames:
-    - istio.local
+    - "*.istio.local"
+    - "istio.local"
   issuerRef:
     name: ca-issuer
     kind: Issuer

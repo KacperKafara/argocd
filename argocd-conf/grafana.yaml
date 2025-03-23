@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana
+  namespace: argocd
+spec:
+  sources:
+    - chart: grafana
+      repoURL: registry-1.docker.io/bitnamicharts
+      path: grafana
+      targetRevision: 11.6.0
+      helm:
+        values: |
+          admin:
+            password: password
+          datasources:
+            secretDefinition:
+              apiVersion: 1
+              datasources:
+                - name: Prometheus
+                  type: prometheus
+                  access: proxy
+                  orgId: 1
+                  url: http://prometheus-server.monitoring.svc.cluster.local
+                  version: 1
+                  editable: true
+                  isDefault: true
+    - repoURL: git@github.com:KacperKafara/argocd.git
+      targetRevision: istio
+      path: monitoring/grafana
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: monitoring
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+  project: default

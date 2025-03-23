@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+  namespace: argocd
+spec:
+  sources:
+    - chart: prometheus
+      repoURL: registry-1.docker.io/bitnamicharts
+      path: prometheus
+      targetRevision: 1.4.9
+      helm:
+        values: |
+          alertmanager:
+            enabled: false
+          server:
+            existingConfigmap: prometheus-cm
+            service:
+              type: ClusterIP
+    - repoURL: git@github.com:KacperKafara/argocd.git
+      targetRevision: istio
+      path: monitoring
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: monitoring
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+  project: default
