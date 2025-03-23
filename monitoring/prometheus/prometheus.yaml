@@ -22,6 +22,11 @@ scrape_configs:
     tls_config:
       ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
       insecure_skip_verify: true
+  - job_name: postgres
+    static_configs:
+      - targets:
+          - infrastructure-prometheus-postgres-exporter.infrastructure.svc.cluster.local
+    metrics_path: /metrics
   - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
     job_name: kubernetes-nodes
     kubernetes_sd_configs:
