@@ -4,10 +4,10 @@ metadata:
   name: ingress-test
   namespace: argocd
 spec:
-  sources:
-    - repoURL: git@github.com:KacperKafara/argocd.git
-      targetRevision: test
-      path: ingress-test
+  source:
+    repoURL: git@github.com:KacperKafara/argocd.git
+    targetRevision: test
+    path: ingress-test
   project: default
   destination:
     server: 'https://kubernetes.default.svc'
