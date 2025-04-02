@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: flask-healthz.local
+    - host: test.local
       http:
         paths:
           - path: /test/(.*)
