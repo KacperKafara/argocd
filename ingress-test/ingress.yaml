@@ -11,7 +11,7 @@ spec:
     - host: test.local
       http:
         paths:
-          - path: /test/(.*)
+          - path: /testowanko/(.*)
             pathType: Prefix
             backend:
               service:
