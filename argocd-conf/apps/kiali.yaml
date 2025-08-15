@@ -10,11 +10,14 @@ spec:
       targetRevision: 2.14.0
       helm:
         valueFiles:
-          - $config/kiali/values.yaml
+          - $config/kiali/kiali-operator/values.yaml
     - repoURL: https://github.com/KacperKafara/argocd.git
       targetRevision: main
-      path: kiali
+      path: kiali/kiali-operator
       ref: config
+    - repoURL: https://github.com/KacperKafara/argocd.git
+      targetRevision: main
+      path: kiali/istio-system
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: kiali-operator
