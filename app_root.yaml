@@ -12,7 +12,7 @@ spec:
   source:
     path: argocd-conf
     repoURL: git@github.com:KacperKafara/argocd.git
-    targetRevision: istio
+    targetRevision: main
     directory:
       recurse: true
   sources: []

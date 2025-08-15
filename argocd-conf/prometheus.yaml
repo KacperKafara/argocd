@@ -19,7 +19,7 @@ spec:
             service:
               type: ClusterIP
     - repoURL: git@github.com:KacperKafara/argocd.git
-      targetRevision: istio
+      targetRevision: main
       path: monitoring
   destination:
     server: 'https://kubernetes.default.svc'

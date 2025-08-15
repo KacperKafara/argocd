@@ -11,7 +11,7 @@ spec:
       repoURL: https://istio-release.storage.googleapis.com/charts
       targetRevision: 1.25.0
     - repoURL: git@github.com:KacperKafara/argocd.git
-      targetRevision: istio
+      targetRevision: main
       path: ingress-gateway
   destination:
     server: 'https://kubernetes.default.svc'

@@ -6,7 +6,7 @@ metadata:
 spec:
   sources:
     - repoURL: git@github.com:KacperKafara/argocd.git
-      targetRevision: istio
+      targetRevision: main
       path: infrastructure
     - repoURL: https://prometheus-community.github.io/helm-charts
       targetRevision: 6.10.0
