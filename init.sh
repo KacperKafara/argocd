@@ -28,3 +28,6 @@ echo "ArgoCD is ready!"
 echo "URL: http://$(minikube ip):$(kubectl get svc -n argocd argocd-server -o=jsonpath='{.spec.ports[0].nodePort}')"
 echo "Login: admin"
 echo "Password: password"
+
+kubectl apply -f argocd-secret.yaml
+kubectl apply -f app_root.yaml

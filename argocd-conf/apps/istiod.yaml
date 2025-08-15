@@ -1,20 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: istiod
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   source:
-    repoURL: git@github.com:KacperKafara/argocd.git
-    targetRevision: main
-    path: cert-conf
-  project: default
+    chart: istiod
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: 1.25.0
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: istio-system
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
+  project: infrastructure

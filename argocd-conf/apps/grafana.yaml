@@ -25,7 +25,7 @@ spec:
                   version: 1
                   editable: true
                   isDefault: true
-    - repoURL: git@github.com:KacperKafara/argocd.git
+    - repoURL: https://github.com/KacperKafara/argocd.git
       targetRevision: main
       path: monitoring/grafana
   destination:
@@ -34,7 +34,4 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
-  project: default
+  project: monitoring

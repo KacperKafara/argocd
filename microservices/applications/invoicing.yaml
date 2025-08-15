@@ -21,7 +21,7 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
           - name: SPRING_DATASOURCE_URL
-            value: jdbc:postgresql://postgres.infrastructure.svc.cluster.local:5432/dbinvoicing
+            value: jdbc:postgresql://postgres.database.svc.cluster.local:5432/dbinvoicing
         ports:
         - containerPort: 8080
 ---

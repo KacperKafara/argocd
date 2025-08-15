@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     path: argocd-conf
-    repoURL: git@github.com:KacperKafara/argocd.git
+    repoURL: https://github.com/KacperKafara/argocd.git
     targetRevision: main
     directory:
       recurse: true

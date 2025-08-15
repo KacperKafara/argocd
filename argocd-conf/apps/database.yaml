@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infrastructure
+  name: database
   namespace: argocd
 spec:
   sources:
-    - repoURL: git@github.com:KacperKafara/argocd.git
+    - repoURL: https://github.com/KacperKafara/argocd.git
       targetRevision: main
-      path: infrastructure
+      path: database
     - repoURL: https://prometheus-community.github.io/helm-charts
       targetRevision: 6.10.0
       chart: prometheus-postgres-exporter
@@ -15,7 +15,7 @@ spec:
         values: |
           config:
             datasource:
-              host: postgres.infrastructure.svc.cluster.local
+              host: postgres.database.svc.cluster.local
               database: dbbonus
               userSecret:
                 name: postgres-secret
@@ -23,16 +23,13 @@ spec:
               passwordSecret:
                 name: postgres-secret
                 key: password
-  project: default
+  project: infrastructure
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: infrastructure
+    namespace: database
   syncPolicy:
     managedNamespaceMetadata:
       labels:
         istio-injection: enabled
     syncOptions:
       - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true

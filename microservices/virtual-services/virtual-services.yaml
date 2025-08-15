@@ -4,7 +4,7 @@ metadata:
   name: virtual-services
 spec:
   hosts:
-    - "istio.local"
+    - "apps.istio.local"
   gateways:
     - istio-system/microservice-gateway
   http:

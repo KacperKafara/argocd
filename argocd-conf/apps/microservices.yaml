@@ -5,12 +5,12 @@ metadata:
   namespace: argocd
 spec:
   source:
-    repoURL: git@github.com:KacperKafara/argocd.git
+    repoURL: https://github.com/KacperKafara/argocd.git
     targetRevision: main
     path: microservices
     directory:
       recurse: true
-  project: default
+  project: apps
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: microservices
@@ -20,6 +20,3 @@ spec:
         istio-injection: enabled
     syncOptions:
       - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
