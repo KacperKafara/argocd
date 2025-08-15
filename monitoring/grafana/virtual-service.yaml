@@ -4,7 +4,7 @@ metadata:
   name: grafana-virtual-services
 spec:
   hosts:
-    - "grafana.istio.local"
+    - "grafana.istio.com"
   gateways:
     - istio-system/microservice-gateway
   http:

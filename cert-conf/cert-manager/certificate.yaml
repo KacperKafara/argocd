@@ -4,14 +4,14 @@ metadata:
   name: ingress-cert
 spec:
   secretName: ingress-cert
-  commonName: "*.istio.local"
+  commonName: "*.istio.com"
   duration: 8760h
   renewBefore: 720h
   subject:
     organizations:
       - Istio
   dnsNames:
-    - "*.istio.local"
+    - "*.istio.com"
   issuerRef:
     name: ca-issuer
     kind: Issuer
