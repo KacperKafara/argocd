@@ -19,10 +19,6 @@ cr:
         internal_url: 'http://grafana.monitoring:3000'
         # Public facing URL of Grafana
         external_url: 'http://grafana.istio.com'
-#        auth:
-#          type: "basic"
-#          username: "secret:grafana-username:value.txt"
-#          password: "secret:grafana-password:value.txt"
         dashboards:
           - name: "Istio Mesh Dashboard"
           - name: "Istio Control Plane Dashboard"
