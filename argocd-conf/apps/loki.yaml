@@ -11,12 +11,6 @@ spec:
       helm:
         valueFiles:
           - $config/logging/loki/values.yaml
-    - chart: promtail
-      repoURL: https://grafana.github.io/helm-charts
-      targetRevision: 6.17.0
-      helm:
-        valueFiles:
-          - $config/logging/promtail/values.yaml
     - repoURL: https://github.com/KacperKafara/argocd.git
       targetRevision: main
       path: logging
