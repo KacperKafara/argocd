@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: loki
+  namespace: argocd
+spec:
+  sources:
+    - chart: loki
+      repoURL: https://grafana.github.io/helm-charts
+      targetRevision: 6.37.0
+      helm:
+        valueFiles:
+          - $config/logging/loki/values.yaml
+    - chart: promtail
+      repoURL: https://grafana.github.io/helm-charts
+      targetRevision: 6.17.0
+      helm:
+        valueFiles:
+          - $config/logging/promtail/values.yaml
+    - repoURL: https://github.com/KacperKafara/argocd.git
+      targetRevision: main
+      path: logging
+      ref: config
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: loki
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+  project: monitoring
