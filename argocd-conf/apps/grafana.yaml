@@ -10,24 +10,12 @@ spec:
       path: grafana
       targetRevision: 11.6.0
       helm:
-        values: |
-          admin:
-            password: password
-          datasources:
-            secretDefinition:
-              apiVersion: 1
-              datasources:
-                - name: Prometheus
-                  type: prometheus
-                  access: proxy
-                  orgId: 1
-                  url: http://prometheus-server.monitoring.svc.cluster.local
-                  version: 1
-                  editable: true
-                  isDefault: true
+        valueFiles:
+          - $config/monitoring/grafana/values.yaml
     - repoURL: https://github.com/KacperKafara/argocd.git
       targetRevision: main
       path: monitoring/grafana
+      ref: config
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
