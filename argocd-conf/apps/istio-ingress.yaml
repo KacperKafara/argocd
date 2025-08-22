@@ -10,6 +10,10 @@ spec:
     - chart: gateway
       repoURL: https://istio-release.storage.googleapis.com/charts
       targetRevision: 1.27.0
+      helm:
+        values: |
+          service:
+            type: NodePort
     - repoURL: https://github.com/KacperKafara/argocd.git
       targetRevision: main
       path: ingress-gateway
