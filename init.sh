@@ -4,7 +4,7 @@
 minikube delete
 
 # run minikube
-minikube start --cpus=4 --memory=6144
+minikube start --cpus=4 --memory=8192
 
 # install argocd
 kubectl create namespace argocd
