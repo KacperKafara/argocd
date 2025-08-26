@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kopf-operator
+  labels:
+    type: kopf-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: kopf-operator
+  template:
+    metadata:
+      labels:
+        type: kopf-operator
+    spec:
+      serviceAccountName: operator-sa
+      containers:
+      - name: kopf-operator
+        image: kopf-test:1.0.1
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /healthz
+          initialDelaySeconds: 5
+          periodSeconds: 60
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /healthz
+          initialDelaySeconds: 5
+          periodSeconds: 60

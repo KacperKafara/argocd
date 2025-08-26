@@ -1,0 +1,6 @@
+apiVersion: istio.com/v1
+kind: Nginx
+metadata:
+  name: istio-nginx
+spec:
+  host: nginx.istio.com

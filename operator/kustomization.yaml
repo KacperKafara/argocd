@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - manifests/service-account.yaml
+  - manifests/cluster-role.yaml
+  - manifests/role.yaml
+  - manifests/cluster-role-binding.yaml
+  - manifests/role-binding.yaml
+  - manifests/custom-resource-definition.yaml
+  - manifests/deployment.yaml
+  - manifests/operator.yaml
