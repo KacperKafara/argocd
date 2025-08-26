@@ -6,7 +6,7 @@ metadata:
 spec:
   source:
     repoURL: https://github.com/KacperKafara/argocd.git
-    targetRevision: main
+    targetRevision: minimal
     path: cert-conf
   project: infrastructure
   destination:
