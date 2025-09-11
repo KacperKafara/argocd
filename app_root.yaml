@@ -12,7 +12,7 @@ spec:
   source:
     path: argocd-conf
     repoURL: https://github.com/KacperKafara/argocd.git
-    targetRevision: minimal
+    targetRevision: operator
     directory:
       recurse: true
   sources: []

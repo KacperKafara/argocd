@@ -6,7 +6,7 @@ metadata:
 spec:
   source:
     repoURL: https://github.com/KacperKafara/argocd.git
-    targetRevision: minimal
+    targetRevision: operator
     path: operator
   destination:
     server: 'https://kubernetes.default.svc'
