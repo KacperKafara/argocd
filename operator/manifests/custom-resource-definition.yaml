@@ -22,8 +22,17 @@ spec:
             spec:
               type: object
               properties:
+                registry:
+                  type: string
+                tag:
+                  type: string
+                ports:
+                  type: array
+                  items:
+                    type: integer
                 host:
                   type: string
+                  pattern: "^[^.]+\\..+$"
                   description: "Host cannot be null"
               required:
                 - host
