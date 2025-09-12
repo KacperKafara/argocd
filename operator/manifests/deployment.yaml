@@ -17,7 +17,7 @@ spec:
       serviceAccountName: operator-sa
       containers:
       - name: kopf-operator
-        image: kopf-test:1.0.1
+        image: kopf-test:1.0.0
         livenessProbe:
           httpGet:
             port: 8080
