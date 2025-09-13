@@ -64,3 +64,31 @@ def create_config_map(content, name):
         }
     }
     return configmap
+
+def create_service(ports):
+    generated_ports = []
+    for port in ports:
+        generated_ports.append(
+            {
+                "name": f"port-{port}",
+                "port": port,
+                "protocol": "TCP",
+                "targetPort": port,
+            }
+        )
+    service = {
+        "apiVersion": "v1",
+        "kind": "Service",
+        "metadata": {
+            "name": "nginx-service",
+        },
+        "spec": {
+            "type": "ClusterIP",
+            "ports": generated_ports,
+            "selector": {
+                "app": "nginx",
+            }
+        }
+    }
+
+    return service
