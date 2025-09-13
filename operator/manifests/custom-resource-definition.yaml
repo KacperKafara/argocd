@@ -30,6 +30,8 @@ spec:
                   type: array
                   items:
                     type: integer
+                config_name:
+                  type: string
                 host:
                   type: string
                   pattern: "^[^.]+\\..+$"
