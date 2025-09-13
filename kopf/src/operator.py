@@ -16,14 +16,15 @@ def load_spec(spec):
     return host, registry, tag
 
 @kopf.on.create("istio.com", "v1", "nginx")
-def on_create(spec, **kwargs):
+def on_create(spec, name, namespace, logger, body, **kwargs):
     host, registry, tag = load_spec(spec)
 
     api = pykube.HTTPClient(pykube.KubeConfig.from_env())
     image = create_image_spec(registry, tag)
     deployment_model, deployment_name = resources_generator.create_deployment_model(image, host)
 
+    kopf.append_owner_reference(deployment_model, body)
     pykube.Deployment(api, deployment_model).create()
 
-    print('New CR created witch host argument: ' + host)
+    logger.info(f"Created deployment model {deployment_name}")
     return {'host': host, 'image': image}
