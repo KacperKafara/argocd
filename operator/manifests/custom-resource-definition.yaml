@@ -22,22 +22,12 @@ spec:
             spec:
               type: object
               properties:
-                registry:
-                  type: string
-                tag:
-                  type: string
-                ports:
+                namespaces:
                   type: array
                   items:
-                    type: integer
-                config_name:
-                  type: string
-                host:
-                  type: string
-                  pattern: "^[^.]+\\..+$"
-                  description: "Host cannot be null"
+                    type: string
               required:
-                - host
+                - namespaces
             status:
               x-kubernetes-preserve-unknown-fields: true
               type: object

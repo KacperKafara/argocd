@@ -22,11 +22,11 @@ spec:
           httpGet:
             port: 8080
             path: /healthz
-          initialDelaySeconds: 5
-          periodSeconds: 60
+          initialDelaySeconds: 2
+          periodSeconds: 5
         readinessProbe:
           httpGet:
             port: 8080
             path: /healthz
-          initialDelaySeconds: 5
-          periodSeconds: 60
+          initialDelaySeconds: 2
+          periodSeconds: 5

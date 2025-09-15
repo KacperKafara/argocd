@@ -3,8 +3,4 @@ kind: Nginx
 metadata:
   name: istio-nginx
 spec:
-  host: "nginx.istio.com"
-  tag: "1.29.1"
-  ports:
-    - 80
-    - 443
+  namespaces: [ 'istio-system' ]
