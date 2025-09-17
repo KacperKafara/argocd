@@ -10,6 +10,20 @@ rules:
     resources: [ "namespaces" ]
     verbs: [ "list", "watch" ]
 
+  - apiGroups: [ "" ]
+    resources: [ "events" ]
+    verbs: [ "create", "patch" ]
+
+  - apiGroups: [ "apps" ]
+    resources: [ "deployments" ]
+    verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
+  - apiGroups: [ "apps" ]
+    resources: [ "deployments/status" ]
+    verbs: [ "get", "update", "patch" ]
+
   - apiGroups: [ "istio.com" ]
     resources: [ "nginx" ]
-    verbs: [ "list", "watch" ]
+    verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
+  - apiGroups: [ "istio.com" ]
+    resources: [ "nginx/status" ]
+    verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
