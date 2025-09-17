@@ -7,3 +7,4 @@ resources:
   - manifests/custom-resource-definition.yaml
   - manifests/deployment.yaml
   - manifests/operator.yaml
+  - manifests/redis.yaml
