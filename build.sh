@@ -3,10 +3,9 @@
 kubectl delete deployment kopf-operator -n operator
 kubectl delete nginx istio-nginx -n operator
 
-sleep 5
+kubectl wait --for=delete deployment/kopf-operator -n operator --timeout=60s
+kubectl wait --for=delete nginx/istio-nginx -n operator --timeout=60s
 
-minikube image rm "kopf-test:1.0.0"
-echo "Image deleted"
 docker build -t "kopf-test:1.0.0" ./kopf/.
-minikube image load "kopf-test:1.0.0"
+minikube image load "kopf-test:1.0.0" --overwrite
 echo "image loaded"
