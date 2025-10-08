@@ -1,6 +1,0 @@
-apiVersion: istio.com/v1
-kind: Nginx
-metadata:
-  name: istio-nginx
-spec:
-  namespaces: [ 'istio-system' ]
