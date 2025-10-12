@@ -4,6 +4,7 @@ kind: Deployment
 metadata:
   name: "{{ .Values.application.name }}-canary"
   labels:
+    version: "{{ .Values.canary.subnet}}"
     app: "{{ .Values.application.name }}-canary"
     name: "{{ .Values.application.name }}"
 spec:
@@ -14,6 +15,7 @@ spec:
   template:
     metadata:
       labels:
+        version: "{{ .Values.canary.subnet}}"
         app: "{{ .Values.application.name }}-canary"
         name: "{{ .Values.application.name }}"
     spec:

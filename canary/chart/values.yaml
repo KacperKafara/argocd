@@ -1,8 +1,11 @@
 application:
   name: canary-app
+  host: canary.istio.com
+  gateway: istio-system/microservice-gateway
 
 prod:
   replicas: 2
+  subnet: v1
   weight: 80
   image:
     repository: nginx
@@ -10,6 +13,7 @@ prod:
 
 canary:
   enabled: true
+  subnet: v2
   replicas: 1
   weight: 20
   image:

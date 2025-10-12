@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: "{{ .Values.application.name }}-vs"
+spec:
+  hosts:
+    - "{{ .Values.application.host }}"
+  gateways:
+    - "{{ .Values.application.gateway }}"
+  http:
+    - route:
+        - destination:
+            host: "{{ .Values.application.name }}-service"
+            subset: "{{ .Values.prod.subnet }}"
+            port:
+              number: 80
+          weight: {{ .Values.prod.weight }}
+        {{- if .Values.canary.enabled | default false }}
+        - destination:
+            host: "{{ .Values.application.name }}-service"
+            subset: "{{ .Values.canary.subnet }}"
+            port:
+              number: 80
+          weight: {{ .Values.canary.weight }}
+        {{- end }}
+      timeout: 5s

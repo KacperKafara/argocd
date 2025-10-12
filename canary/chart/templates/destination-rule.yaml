@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: "{{ .Values.application.name }}-dest-rule"
+spec:
+  host: "{{ .Values.application.name }}-service"
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+  subsets:
+    - name: "{{ .Values.prod.subnet }}"
+      labels:
+        version: "{{ .Values.prod.subnet }}"
+    {{- if .Values.canary.enabled | default false }}
+    - name: "{{ .Values.canary.subnet }}"
+      labels:
+        version: "{{ .Values.canary.subnet }}"
+    {{- end }}

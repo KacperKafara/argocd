@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: "{{ .Values.application.name }}"
   labels:
+    version: "{{ .Values.prod.subnet}}"
     app: "{{ .Values.application.name }}"
     name: "{{ .Values.application.name }}"
 spec:
@@ -13,6 +14,7 @@ spec:
   template:
     metadata:
       labels:
+        version: "{{ .Values.prod.subnet}}"
         app: "{{ .Values.application.name }}"
         name: "{{ .Values.application.name }}"
     spec:
