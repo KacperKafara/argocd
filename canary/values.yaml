@@ -1,0 +1,17 @@
+application:
+  name: canary-app
+
+prod:
+  replicas: 2
+  weight: 80
+  image:
+    repository: nginx
+    tag: 1.28.0
+
+canary:
+  enabled: true
+  replicas: 1
+  weight: 20
+  image:
+    repository: nginx
+    tag: 1.29.2

@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: canary-release
+  namespace: argocd
+spec:
+  sources:
+    - repoURL: https://github.com/KacperKafara/argocd.git
+      targetRevision: canary
+      path: canary
+      helm:
+        releaseName: canary-release
+        valueFiles:
+          - values.yaml
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: canary-release-app
+  syncPolicy:
+    managedNamespaceMetadata:
+      labels:
+        istio-injection: enabled
+    syncOptions:
+      - CreateNamespace=true
+  project: app

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.application.name }}"
+  labels:
+    app: "{{ .Values.application.name }}-canary"
+    name: "{{ .Values.application.name }}"
+spec:
+  replicas: {{ .Values.prod.replicas }}
+  selector:
+    matchLabels:
+      app: "{{ .Values.application.name }}-canary"
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.application.name }}-canary"
+        name: "{{ .Values.application.name }}"
+    spec:
+      containers:
+        - name: "{{ .Values.application.name }}-canary"
+          image: "{{ .Values.prod.image.repository }}:{{ .Values.prod.image.tag }}"
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
