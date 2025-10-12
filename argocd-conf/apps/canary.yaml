@@ -7,11 +7,14 @@ spec:
   sources:
     - repoURL: https://github.com/KacperKafara/argocd.git
       targetRevision: canary
-      path: canary
+      path: canary/chart
       helm:
         releaseName: canary-release
         valueFiles:
           - values.yaml
+    - repoURL: https://github.com/KacperKafara/argocd.git
+      targetRevision: canary
+      path: canary/configmaps
   destination:
     server: "https://kubernetes.default.svc"
     namespace: canary-release-app

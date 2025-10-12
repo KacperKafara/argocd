@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+configMapGenerator:
+  - name: canary-page
+    files:
+      - canary/index.html
+  - name: prod-page
+    files:
+      - prod/index.html
+generatorOptions:
+  disableNameSuffixHash: true

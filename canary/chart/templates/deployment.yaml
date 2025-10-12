@@ -3,21 +3,21 @@ kind: Deployment
 metadata:
   name: "{{ .Values.application.name }}"
   labels:
-    app: "{{ .Values.application.name }}-canary"
+    app: "{{ .Values.application.name }}"
     name: "{{ .Values.application.name }}"
 spec:
   replicas: {{ .Values.prod.replicas }}
   selector:
     matchLabels:
-      app: "{{ .Values.application.name }}-canary"
+      app: "{{ .Values.application.name }}"
   template:
     metadata:
       labels:
-        app: "{{ .Values.application.name }}-canary"
+        app: "{{ .Values.application.name }}"
         name: "{{ .Values.application.name }}"
     spec:
       containers:
-        - name: "{{ .Values.application.name }}-canary"
+        - name: "{{ .Values.application.name }}"
           image: "{{ .Values.prod.image.repository }}:{{ .Values.prod.image.tag }}"
           resources:
             requests:
@@ -26,3 +26,10 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
+          volumeMounts:
+            - name: prod-page
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: prod-page
+          configMap:
+            name: prod-page

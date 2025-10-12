@@ -27,4 +27,11 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
+          volumeMounts:
+            - name: canary-page
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: canary-page
+          configMap:
+            name: canary-page
 {{- end }}
