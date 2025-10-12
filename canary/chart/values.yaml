@@ -12,7 +12,7 @@ prod:
     tag: 1.28.0
 
 canary:
-  enabled: true
+  enabled: false
   subnet: v2
   replicas: 1
   weight: 20
