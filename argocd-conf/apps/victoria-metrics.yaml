@@ -8,6 +8,16 @@ spec:
     - chart: vm/victoria-metrics-cluster
       repoURL: oci://ghcr.io/victoriametrics/helm-charts/victoria-metrics-cluster
       targetRevision: 0.36.0
+    - chart: vm/victoria-metrics-agent
+      repoURL: oci://ghcr.io/victoriametrics/helm-charts/victoria-metrics-agent
+      targetRevision: 0.33.0
+      helm:
+        valueFiles:
+          - $config/monitoring/victoria/values.yaml
+    - repoURL: https://github.com/KacperKafara/argocd.git
+      targetRevision: victoria
+      path: monitoring/victoria
+      ref: config
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
