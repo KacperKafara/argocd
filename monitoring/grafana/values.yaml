@@ -1,20 +1,11 @@
 adminPassword: password
-#datasources:
-#  secretDefinition:
-#    apiVersion: 1
-#    datasources:
-#      - name: Prometheus
-#        type: prometheus
-#        access: proxy
-#        orgId: 1
-#        url: http://prometheus-server.monitoring.svc.cluster.local
-#        version: 1
-#        editable: true
-#        isDefault: true
-#      - name: Loki
-#        type: loki
-#        url: http://loki-gateway.loki.svc.cluster.local
-#        jsonData:
-#          httpHeaderName1: 'X-Scope-OrgID'
-#        secureJsonData:
-#          httpHeaderValue1: 'tenant-1'
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: VictoriaMetrics
+        type: prometheus
+        access: proxy
+        url: http://victoria-metrics-victoria-metrics-cluster-vmselect:8481/select/multitenant/prometheus
+        isDefault: true
