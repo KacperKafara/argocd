@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: victoria-metrics
+  namespace: argocd
+spec:
+  sources:
+    - chart: vm/victoria-metrics-cluster
+      repoURL: oci://ghcr.io/victoriametrics/helm-charts/victoria-metrics-cluster
+      targetRevision: 0.36.0
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: monitoring
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+  project: monitoring
