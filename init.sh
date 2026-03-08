@@ -5,6 +5,7 @@ minikube delete
 
 # run minikube
 minikube start --cpus=4 --memory=8192
+minikube addons enable metrics-server
 
 # install argocd
 kubectl create namespace argocd
