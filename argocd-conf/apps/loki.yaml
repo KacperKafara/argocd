@@ -12,7 +12,7 @@ spec:
         valueFiles:
           - $config/logging/loki/values.yaml
     - repoURL: https://github.com/KacperKafara/argocd.git
-      targetRevision: main
+      targetRevision: grafana-multi-deploy
       path: logging/loki
       ref: config
   destination:

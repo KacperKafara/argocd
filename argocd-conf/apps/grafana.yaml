@@ -6,14 +6,14 @@ metadata:
 spec:
   sources:
     - chart: grafana
-      repoURL: registry-1.docker.io/bitnamicharts
+      repoURL: https://grafana.github.io/helm-charts
       path: grafana
-      targetRevision: 11.6.0
+      targetRevision: 10.5.15
       helm:
         valueFiles:
           - $config/monitoring/grafana/values.yaml
     - repoURL: https://github.com/KacperKafara/argocd.git
-      targetRevision: main
+      targetRevision: grafana-multi-deploy
       path: monitoring/grafana
       ref: config
   destination:

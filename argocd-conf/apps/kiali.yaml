@@ -12,11 +12,11 @@ spec:
         valueFiles:
           - $config/kiali/kiali-operator/values.yaml
     - repoURL: https://github.com/KacperKafara/argocd.git
-      targetRevision: main
+      targetRevision: grafana-multi-deploy
       path: kiali/kiali-operator
       ref: config
     - repoURL: https://github.com/KacperKafara/argocd.git
-      targetRevision: main
+      targetRevision: grafana-multi-deploy
       path: kiali/istio-system
   destination:
     server: 'https://kubernetes.default.svc'

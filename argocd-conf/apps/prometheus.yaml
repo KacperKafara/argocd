@@ -19,7 +19,7 @@ spec:
             service:
               type: ClusterIP
     - repoURL: https://github.com/KacperKafara/argocd.git
-      targetRevision: main
+      targetRevision: grafana-multi-deploy
       path: monitoring
   destination:
     server: 'https://kubernetes.default.svc'

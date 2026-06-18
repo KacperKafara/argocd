@@ -12,7 +12,7 @@ spec:
         valueFiles:
           - $config/logging/fluent-bit/values.yaml
     - repoURL: https://github.com/KacperKafara/argocd.git
-      targetRevision: main
+      targetRevision: grafana-multi-deploy
       path: logging/fluent-bit
       ref: config
   destination:
